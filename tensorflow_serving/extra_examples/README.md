@@ -20,7 +20,12 @@ Build the server:
 $ bazel build tensorflow_serving/extra_examples/basic_classifier_server
 ``` 
 
-Run the server:
+Run the server (without batching):
+```shell
+$ bazel-bin/tensorflow_serving/extra_examples/basic_classifier_server --port=9000
+```
+
+Run the server (with batching):
 ```shell
 $ bazel-bin/tensorflow_serving/extra_examples/basic_classifier_server --port=9000 \
 --use_batching \
@@ -34,7 +39,7 @@ $ bazel-bin/tensorflow_serving/extra_examples/basic_classifier_server --port=900
 ```
 
 ## Classification Client
-The classification client is a python script that is passed the url of a classification server and a path to a JPEG image. The image is loaded, preprocessed and sent to the server. The results and the time for classification are printed out.
+The classification client is a python script that is passed the host address and port of a classification server and a path to a JPEG image. The image is loaded, preprocessed and sent to the server. The results and the time for classification are printed.
 ```shell
 $ python tensorflow_serving/extra_examples/classifier_client.py --server=localhost:9000 \
 --image=/tmp/test.jpg
